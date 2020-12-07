@@ -1,16 +1,30 @@
-import { IMathOperations } from "./interfaces/IMathOperations";
+import { Op } from "./types/MathOperations";
 
-export default class MathOperations implements IMathOperations {
-  sum(firstNumber: number, secondNumber: number): number {
-    return firstNumber + secondNumber;
+export default function MathOperations(
+  operation: Op,
+  firstNumber: number,
+  secondNumber: number
+): number {
+  let response;
+
+  switch (operation) {
+    case "sum":
+      const sum = firstNumber + secondNumber;
+      response = sum;
+      break;
+    case "subtraction":
+      const subtraction = firstNumber - secondNumber;
+      response = subtraction;
+      break;
+    case "multiply":
+      const multiply = firstNumber * secondNumber;
+      response = multiply;
+      break;
+    case "divide":
+      const divide = firstNumber / secondNumber;
+      response = divide;
+      break;
   }
-  subtract(firstNumber: number, secondNumber: number): number {
-    return firstNumber - secondNumber;
-  }
-  multiply(firstNumber: number, secondNumber: number): number {
-    return firstNumber * secondNumber;
-  }
-  divide(firstNumber: number, secondNumber: number): number {
-    return firstNumber / secondNumber;
-  }
+
+  return response;
 }
